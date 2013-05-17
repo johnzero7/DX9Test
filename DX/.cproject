@@ -89,6 +89,11 @@
 							<tool id="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.exe.release.1930828742" name="GCC C++ Compiler" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.mingw.exe.release">
 								<option id="gnu.cpp.compiler.mingw.exe.release.option.optimization.level.1720133984" name="Optimization Level" superClass="gnu.cpp.compiler.mingw.exe.release.option.optimization.level" value="gnu.cpp.compiler.optimization.level.most" valueType="enumerated"/>
 								<option id="gnu.cpp.compiler.mingw.exe.release.option.debugging.level.1638228773" name="Debug Level" superClass="gnu.cpp.compiler.mingw.exe.release.option.debugging.level" value="gnu.cpp.compiler.debugging.level.none" valueType="enumerated"/>
+								<option id="gnu.cpp.compiler.option.include.paths.907243004" name="Include paths (-I)" superClass="gnu.cpp.compiler.option.include.paths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;N:\SDK\Oculus\OculusSDK\LibOVR\Include&quot;"/>
+								</option>
+								<option id="gnu.cpp.compiler.option.other.other.1412546573" name="Other flags" superClass="gnu.cpp.compiler.option.other.other" value="-c -fmessage-length=0" valueType="string"/>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.compiler.input.1185700845" superClass="cdt.managedbuild.tool.gnu.cpp.compiler.input"/>
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.release.1166585047" name="GCC C Compiler" superClass="cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.release">
@@ -98,6 +103,19 @@
 							</tool>
 							<tool id="cdt.managedbuild.tool.gnu.c.linker.mingw.exe.release.409132094" name="MinGW C Linker" superClass="cdt.managedbuild.tool.gnu.c.linker.mingw.exe.release"/>
 							<tool id="cdt.managedbuild.tool.gnu.cpp.linker.mingw.exe.release.1824051356" name="MinGW C++ Linker" superClass="cdt.managedbuild.tool.gnu.cpp.linker.mingw.exe.release">
+								<option id="gnu.cpp.link.option.paths.1941511013" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
+									<listOptionValue builtIn="false" value="&quot;C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Lib\x86&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;N:\SDK\Oculus\OculusSDK\LibOVR\Lib\Win32&quot;"/>
+								</option>
+								<option id="gnu.cpp.link.option.libs.1779926179" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
+									<listOptionValue builtIn="false" value="d3dx9"/>
+									<listOptionValue builtIn="false" value="d3d9"/>
+									<listOptionValue builtIn="false" value="dxguid"/>
+									<listOptionValue builtIn="false" value="dinput8"/>
+									<listOptionValue builtIn="false" value="libovr"/>
+									<listOptionValue builtIn="false" value="libovrd"/>
+								</option>
+								<option id="gnu.cpp.link.option.flags.1555393176" name="Linker flags" superClass="gnu.cpp.link.option.flags" value="-static-libgcc -static-libstdc++ -mwindows" valueType="string"/>
 								<inputType id="cdt.managedbuild.tool.gnu.cpp.linker.input.456261551" superClass="cdt.managedbuild.tool.gnu.cpp.linker.input">
 									<additionalInput kind="additionalinputdependency" paths="$(USER_OBJS)"/>
 									<additionalInput kind="additionalinput" paths="$(LIBS)"/>
@@ -129,10 +147,10 @@
 	<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 	<storageModule moduleId="scannerConfiguration">
 		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
-		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.release.1823215019;cdt.managedbuild.config.gnu.mingw.exe.release.1823215019.;cdt.managedbuild.tool.gnu.cpp.compiler.mingw.exe.release.1930828742;cdt.managedbuild.tool.gnu.cpp.compiler.input.1185700845">
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.debug.1202067651;cdt.managedbuild.config.gnu.mingw.exe.debug.1202067651.;cdt.managedbuild.tool.gnu.cpp.compiler.mingw.exe.debug.38054207;cdt.managedbuild.tool.gnu.cpp.compiler.input.1284044451">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileCPP"/>
 		</scannerConfigBuildInfo>
-		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.debug.1202067651;cdt.managedbuild.config.gnu.mingw.exe.debug.1202067651.;cdt.managedbuild.tool.gnu.cpp.compiler.mingw.exe.debug.38054207;cdt.managedbuild.tool.gnu.cpp.compiler.input.1284044451">
+		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.release.1823215019;cdt.managedbuild.config.gnu.mingw.exe.release.1823215019.;cdt.managedbuild.tool.gnu.cpp.compiler.mingw.exe.release.1930828742;cdt.managedbuild.tool.gnu.cpp.compiler.input.1185700845">
 			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId="org.eclipse.cdt.managedbuilder.core.GCCManagedMakePerProjectProfileCPP"/>
 		</scannerConfigBuildInfo>
 		<scannerConfigBuildInfo instanceId="cdt.managedbuild.config.gnu.mingw.exe.debug.1202067651;cdt.managedbuild.config.gnu.mingw.exe.debug.1202067651.;cdt.managedbuild.tool.gnu.c.compiler.mingw.exe.debug.1125094426;cdt.managedbuild.tool.gnu.c.compiler.input.670678803">
