@@ -1,0 +1,11 @@
+eclipse.preferences.version=1
+environment/project/cdt.managedbuild.config.gnu.mingw.exe.debug.1202067651/PATH/delimiter=;
+environment/project/cdt.managedbuild.config.gnu.mingw.exe.debug.1202067651/PATH/operation=replace
+environment/project/cdt.managedbuild.config.gnu.mingw.exe.debug.1202067651/PATH/value=C\:\\MinGW\\bin;C\:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C\:\\Program Files\\Common Files\\Microsoft Shared\\Windows Live;C\:\\Windows\\system32;C\:\\Windows;C\:\\Windows\\System32\\Wbem;C\:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C\:\\Program Files\\Microsoft Windows Performance Toolkit\\;C\:\\Program Files\\Common Files\\Microsoft Shared\\Windows Live;C\:\\Program Files (x86)\\Steam\\steamapps\\john_zero_7\\garrysmod\\garrysmod\\..\\bin
+environment/project/cdt.managedbuild.config.gnu.mingw.exe.debug.1202067651/append=true
+environment/project/cdt.managedbuild.config.gnu.mingw.exe.debug.1202067651/appendContributed=true
+environment/project/cdt.managedbuild.config.gnu.mingw.exe.release.1823215019/PATH/delimiter=;
+environment/project/cdt.managedbuild.config.gnu.mingw.exe.release.1823215019/PATH/operation=replace
+environment/project/cdt.managedbuild.config.gnu.mingw.exe.release.1823215019/PATH/value=C\:\\MinGW\\bin;C\:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\Common;C\:\\Program Files\\Common Files\\Microsoft Shared\\Windows Live;C\:\\Windows\\system32;C\:\\Windows;C\:\\Windows\\System32\\Wbem;C\:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C\:\\Program Files\\Microsoft Windows Performance Toolkit\\;C\:\\Program Files\\Common Files\\Microsoft Shared\\Windows Live;C\:\\Program Files (x86)\\Steam\\steamapps\\john_zero_7\\garrysmod\\garrysmod\\..\\bin;C\:\\MinGW\\bin
+environment/project/cdt.managedbuild.config.gnu.mingw.exe.release.1823215019/append=true
+environment/project/cdt.managedbuild.config.gnu.mingw.exe.release.1823215019/appendContributed=true
