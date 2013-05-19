@@ -10,7 +10,13 @@ using namespace std;
 #include <windowsx.h>
 #include <d3d9.h>
 #include <d3dx9.h>
+#include "includes/input.h"
 #include <dinput.h>
+
+
+
+//Oculus Rift integration
+//#include "../X/OVR.h"
 
 // include the Direct3D Library file only VB
 //#pragma comment (lib, "d3d9.lib")
@@ -18,7 +24,7 @@ using namespace std;
 
 // define the screen resolution and keyboard macros
 #define SCREEN_WIDTH  1920
-#define SCREEN_HEIGHT 600
+#define SCREEN_HEIGHT 1080
 
 #define CUSTOMFVF (D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX1)
 struct CUSTOMVERTEX {FLOAT X, Y, Z; D3DVECTOR NORMAL; FLOAT U, V;};
@@ -33,12 +39,6 @@ void cleanDInput(void);    // closes DirectInput and releases memory
 bool cleanD3D(void); // closes Direct3D and releases memory
 void init_graphics(void); // creates the model
 
-bool keyPressed(UINT);
-bool keyReleased(UINT);
-bool keyUp(UINT);
-bool keyDown(UINT);
-bool mousePressed(UINT);
-bool mouseReleased(UINT);
 // the WindowProc function prototype
 LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 
@@ -93,14 +93,23 @@ D3DVIEWPORT9 q2 = {SCREEN_WIDTH/2, 0, SCREEN_WIDTH/2, SCREEN_HEIGHT, 0.0f, 1.0f}
 
 D3DVIEWPORT9 vps[2] = {q1,q2};
 
-
 // the entry point for any Windows program
 int WINAPI WinMain(HINSTANCE hInstance,
                    HINSTANCE hPrevInstance,
                    LPSTR lpCmdLine,
                    int nCmdShow)
 {
-    HWND hWnd;
+	//Oculus initializartion
+/*
+	OVR::System::Init();
+//	OVR::System::Init(OVR::Log::ConfigureDefaultLog(OVR::LogMask_All));
+	OVR::Ptr<OVR::DeviceManager> pManager;
+	OVR::Ptr<OVR::HMDDevice> pHMD;
+	pManager = *OVR::DeviceManager::Create();
+	pHMD = *pManager->EnumerateDevices<OVR::HMDDevice>().CreateDevice();
+*/
+
+	HWND hWnd;
     WNDCLASSEX wc;
 
     ZeroMemory(&wc, sizeof(WNDCLASSEX));
@@ -202,7 +211,7 @@ int WINAPI WinMain(HINSTANCE hInstance,
 
         render_frame();
         // check the 'escape' key
-        if(keyReleased(DIK_ESCAPE))    // if the 'ESCAPE' key was pressed...
+        if(keyReleased(DIK_ESCAPE, prevKeyState, currKeyState))    // if the 'ESCAPE' key was pressed...
             PostMessage(hWnd, WM_DESTROY, 0, 0);
 
         //while (fLimit <= 1.0f);
@@ -217,7 +226,10 @@ int WINAPI WinMain(HINSTANCE hInstance,
 
     // clean up DirectX and COM
     cleanD3D();
-
+/*
+    //Oculus Finalization
+    OVR::System::Destroy();
+*/
     return msg.wParam;
 }
 
@@ -395,7 +407,7 @@ void render_frame(void)
 
     static bool viewMode = false;
     static bool renderMode = false;
-    if (keyPressed(DIK_W)){
+    if (keyPressed(DIK_W, prevKeyState, currKeyState)){
     	renderMode = !renderMode;
     }
     if (renderMode){
@@ -404,7 +416,7 @@ void render_frame(void)
     	 d3ddev->SetRenderState(D3DRS_FILLMODE,D3DFILL_SOLID);
     }
 
-    if (mousePressed(1)){
+    if (mousePressed(1, prevMouseState, currMouseState)){
     	viewMode = !viewMode;
     }
 
@@ -452,7 +464,7 @@ void render_frame(void)
 
 		float cameraXPos = indexZ+(nViewport*(-indexZ*2));
 		D3DXVECTOR3 camPos = D3DXVECTOR3 (cameraXPos , 0.0f, -50.0f);
-		D3DXVECTOR3 camLookAt = D3DXVECTOR3 (0.0f, 0.0f, 0.0f);
+		D3DXVECTOR3 camLookAt = D3DXVECTOR3 (cameraXPos, 0.0f, 0.0f);
 		D3DXVECTOR3 camUpVec = D3DXVECTOR3 (0.0f, 1.0f, 0.0f);
 		D3DXMatrixLookAtLH(&matView,
 						   &camPos,    // the camera position
@@ -766,49 +778,3 @@ bool cleanD3D(void)
 
 }
 
-bool keyPressed(UINT keyCode)
-{
-	bool state = false;
-	bool prevKey = prevKeyState[keyCode] & 0x80;
-	bool currKey = currKeyState[keyCode] & 0x80;
-	if (!prevKey & currKey)
-		state = true;
-	return state;
-}
-
-bool keyReleased(UINT keyCode) {
-	bool state = false;
-	bool prevKey = prevKeyState[keyCode] & 0x80;
-	bool currKey = currKeyState[keyCode] & 0x80;
-	if (prevKey & !currKey)
-		state = true;
-	return state;
-}
-
-bool keyUp(UINT keyCode) {
-	return !(currKeyState[keyCode] & 0x80);
-
-}
-
-bool keyDown(UINT keyCode) {
-	return (currKeyState[keyCode] & 0x80);
-}
-
-bool mousePressed(UINT keyCode)
-{
-	bool state = false;
-	bool prevKey = prevMouseState.rgbButtons[keyCode] & 0x80;
-	bool currKey = currMouseState.rgbButtons[keyCode] & 0x80;
-	if (!prevKey & currKey)
-		state = true;
-	return state;
-}
-
-bool mouseReleased(UINT keyCode) {
-	bool state = false;
-	bool prevKey = prevMouseState.rgbButtons[keyCode] & 0x80;
-	bool currKey = currMouseState.rgbButtons[keyCode] & 0x80;
-	if (prevKey & !currKey)
-		state = true;
-	return state;
-}
